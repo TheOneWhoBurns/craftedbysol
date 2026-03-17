@@ -94,8 +94,8 @@
 .badge-logo .badge-img {
   background: rgba(255, 255, 255, 0.94);
   border-radius: 50%;
-  /* more padding on left+top to visually center the dragon, less on right+bottom */
-  padding: 18px 14px 22px 18px;
+  /* tighter padding so logo fills more of the circle; right offset for visual center */
+  padding: 10px 8px 14px 16px;
   box-shadow:
     0 0 30px rgba(255, 255, 255, 0.12),
     0 0 60px rgba(135, 229, 253, 0.08);
@@ -110,5 +110,5 @@
   text-transform: uppercase;
   text-align: center;
   pointer-events: none;
-  z-index: 1;
+  z-index: 20;
 }

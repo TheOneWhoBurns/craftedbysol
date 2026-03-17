@@ -33,8 +33,8 @@ function Me() {
     const w = window.innerWidth
     const h = window.innerHeight
     /* USFQ center: upper-center area, leaving room for bio at bottom-left */
-    const cx = w * 0.72
-    const cy = h * 0.42
+    const cx = w * 0.60
+    const cy = h * 0.40
 
     const engine = Engine.create({ gravity: { x: 0, y: 0 } })
     engineRef.current = engine
@@ -70,8 +70,18 @@ function Me() {
       return body
     })
 
+    /* static body for the "Computer Science" text label under USFQ */
+    const textW = 220, textH = 28
+    const usfq = startPositions[USFQ_IDX]
+    const textBody = Bodies.rectangle(
+      usfq.x,
+      usfq.y + BADGES[USFQ_IDX].r + 16 + textH / 2,
+      textW, textH,
+      { isStatic: true, label: 'text-label' }
+    )
+
     bodiesRef.current = bodies
-    World.add(engine.world, [...walls, ...bodies])
+    World.add(engine.world, [...walls, ...bodies, textBody])
 
     /* mouse constraint for drag */
     const mouse = Mouse.create(containerRef.current)
