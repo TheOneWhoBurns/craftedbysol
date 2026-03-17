@@ -1,0 +1,114 @@
+.me-page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(160deg, var(--navy) 0%, var(--primary) 50%, #1a1a6e 100%);
+  overflow: hidden;
+}
+
+.me-texture {
+  position: absolute;
+  inset: 0;
+  background-image: url('./assets/brushed-alum-dark.png');
+  background-repeat: repeat;
+  background-size: 400px 400px;
+  opacity: 0.12;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Bio — pinned bottom-left ── */
+
+.me-bio {
+  position: absolute;
+  bottom: 5vh;
+  left: 5vw;
+  max-width: 460px;
+  z-index: 3;
+  animation: bio-in 800ms var(--ease-in-out-expo) both;
+}
+
+@keyframes bio-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+.me-title {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.6rem;
+  line-height: 1;
+}
+
+.me-text {
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.me-text-dim {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-style: italic;
+}
+
+/* ── Badges ── */
+
+.badge {
+  position: absolute;
+  z-index: 2;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  pointer-events: none; /* let matter-js mouse handle it */
+  transition: filter 150ms;
+}
+
+.badge:hover {
+  filter: brightness(1.15) drop-shadow(0 0 20px rgba(255, 255, 255, 0.25));
+}
+
+.badge.grabbed {
+  cursor: grabbing;
+  filter: brightness(1.2) drop-shadow(0 0 28px rgba(255, 255, 255, 0.4));
+  z-index: 10;
+}
+
+.badge-img {
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.5));
+}
+
+/* USFQ — the star, bigger than the rest */
+.badge-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.badge-logo .badge-img {
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 50%;
+  padding: 24px 28px 30px 26px;
+  box-shadow:
+    0 0 30px rgba(255, 255, 255, 0.12),
+    0 0 60px rgba(135, 229, 253, 0.08);
+}
+
+.badge-sub {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  pointer-events: none;
+}
