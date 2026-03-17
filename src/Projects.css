@@ -1,0 +1,204 @@
+.projects-page {
+  background-color: var(--deep);
+  min-height: 100vh;
+  padding: 3rem 6vw 4rem;
+  overflow-y: auto;
+}
+
+.projects-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+.projects-texture {
+  background-image: url('./assets/cartographer.png');
+  -webkit-mask-image: linear-gradient(
+    to right,
+    white 0%,
+    white 40%,
+    transparent 60%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    white 0%,
+    white 40%,
+    transparent 60%,
+    transparent 100%
+  );
+}
+
+.projects-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  color: var(--frost);
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
+}
+
+.tags-container {
+  max-height: 4.75rem;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, white 55%, transparent 100%);
+  mask-image: linear-gradient(to bottom, white 55%, transparent 100%);
+}
+
+.tags-container.expanded {
+  max-height: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tags-toggle {
+  background: none;
+  border: none;
+  color: var(--frost);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.35rem 0;
+}
+
+.tags-toggle:hover {
+  color: var(--aqua);
+}
+
+.tag {
+  padding: 0.3rem 0.85rem;
+  border: 1px solid var(--frost);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--frost);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 200ms, color 200ms, border-color 200ms;
+}
+
+.tag:nth-child(6n+1) { border-color: var(--frost); color: var(--frost); }
+.tag:nth-child(6n+2) { border-color: var(--aqua); color: var(--aqua); }
+.tag:nth-child(6n+3) { border-color: #a78bfa; color: #a78bfa; }
+.tag:nth-child(6n+4) { border-color: #fb923c; color: #fb923c; }
+.tag:nth-child(6n+5) { border-color: #4ade80; color: #4ade80; }
+.tag:nth-child(6n+6) { border-color: #f472b6; color: #f472b6; }
+
+.tag:hover { background: rgba(255, 255, 255, 0.08); }
+
+.tag.active:nth-child(6n+1) { background: var(--frost); color: var(--deep); }
+.tag.active:nth-child(6n+2) { background: var(--aqua); color: var(--deep); }
+.tag.active:nth-child(6n+3) { background: #a78bfa; color: var(--deep); }
+.tag.active:nth-child(6n+4) { background: #fb923c; color: var(--deep); }
+.tag.active:nth-child(6n+5) { background: #4ade80; color: var(--deep); }
+.tag.active:nth-child(6n+6) { background: #f472b6; color: var(--deep); }
+
+.projects-divider {
+  border: none;
+  border-top: 1px solid rgba(135, 229, 253, 0.2);
+  margin: 1.5rem 0;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+/* ── Cards ── */
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(135, 229, 253, 0.1);
+  border-radius: 10px;
+  text-decoration: none;
+  overflow: hidden;
+  background: rgba(135, 229, 253, 0.03);
+  max-height: 220px;
+  opacity: 1;
+  animation: card-in 500ms var(--ease-in-out-expo) both;
+  animation-delay: calc(var(--i) * 35ms);
+  transition:
+    opacity 400ms var(--ease-in-out-expo),
+    max-height 400ms var(--ease-in-out-expo),
+    padding 400ms var(--ease-in-out-expo),
+    margin 400ms var(--ease-in-out-expo),
+    border-color 200ms,
+    background 200ms;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+.project-card:hover {
+  border-color: rgba(135, 229, 253, 0.25);
+  background: rgba(135, 229, 253, 0.06);
+}
+
+.project-card.hidden {
+  order: 1;
+  opacity: 0;
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+  border-width: 0;
+  pointer-events: none;
+}
+
+.card-lang {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--aqua);
+  opacity: 0.7;
+}
+
+.card-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--frost);
+}
+
+.card-desc {
+  font-size: 0.75rem;
+  color: rgba(135, 229, 253, 0.5);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Load More ── */
+
+.load-more {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.5rem 2rem;
+  background: none;
+  border: 1px solid rgba(135, 229, 253, 0.2);
+  border-radius: 999px;
+  color: var(--frost);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 200ms, background 200ms;
+}
+
+.load-more:hover {
+  border-color: rgba(135, 229, 253, 0.4);
+  background: rgba(135, 229, 253, 0.06);
+}

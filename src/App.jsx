@@ -58,10 +58,11 @@ function App() {
   return (
     <div className="page">
       <div className="texture-overlay" />
-      <div className="name">
-        <span className="static">Created by&nbsp;</span>
+      <a href="https://projects.craftedbysol.dev" className="nav-link">Projects</a>
+      <a href="https://github.com/TheOneWhoBurns" target="_blank" rel="noopener noreferrer" className="name">
+        <span className="static">Crafted by&nbsp;</span>
         <TextMorph className="morph" duration={80} scale={false} ease="linear">{name}</TextMorph>
-      </div>
+      </a>
     </div>
   )
 }

@@ -4,6 +4,7 @@
   --deep: #0E0E52;
   --aqua: #0ECCFB;
   --frost: #87E5FD;
+  --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
 
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -17,6 +18,13 @@
 }
 
 html, body, #root {
-  height: 100vh;
-  overflow: hidden;
+  height: 100%;
+}
+
+.texture-overlay {
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  pointer-events: none;
 }
