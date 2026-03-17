@@ -71,7 +71,7 @@ function Me() {
     })
 
     /* static body for the "Computer Science" text label under USFQ */
-    const textW = 220, textH = 28
+    const textW = 280, textH = 44
     const usfq = startPositions[USFQ_IDX]
     const textBody = Bodies.rectangle(
       usfq.x,
