@@ -88,22 +88,21 @@
 
 /* USFQ — the star, bigger than the rest */
 .badge-logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
+  display: block;
 }
 
 .badge-logo .badge-img {
   background: rgba(255, 255, 255, 0.94);
   border-radius: 50%;
-  padding: 24px 28px 30px 26px;
+  /* more padding on left+top to visually center the dragon, less on right+bottom */
+  padding: 18px 14px 22px 18px;
   box-shadow:
     0 0 30px rgba(255, 255, 255, 0.12),
     0 0 60px rgba(135, 229, 253, 0.08);
 }
 
 .badge-sub {
+  position: absolute;
   font-size: 0.85rem;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.55);
@@ -111,4 +110,5 @@
   text-transform: uppercase;
   text-align: center;
   pointer-events: none;
+  z-index: 1;
 }

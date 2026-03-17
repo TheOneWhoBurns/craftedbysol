@@ -7,11 +7,11 @@ import './Me.css'
 const { Engine, World, Bodies, Body, Mouse, MouseConstraint, Events } = Matter
 
 const BADGES = [
-  { id: 1, label: 'AWS CloudOps Engineer', img: 'https://images.credly.com/size/340x340/images/88a6405e-0f26-442a-95ed-f9b9db4c857e/blob', r: 70 },
-  { id: 2, label: 'AWS Cloud Practitioner', img: 'https://images.credly.com/size/340x340/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png', r: 70 },
-  { id: 3, label: 'AWS Sales Accreditation', img: 'https://images.credly.com/size/340x340/images/46ea4542-72a8-46a1-8d68-b72c4ca50820/blob', r: 70 },
-  { id: 4, label: 'AWS Technical Accredited', img: 'https://images.credly.com/size/340x340/images/8f006312-3154-45bf-a845-4a043641e83c/blob', r: 70 },
-  { id: 5, label: 'USFQ', img: usfqLogo, isLogo: true, sub: 'Computer Science', r: 100 },
+  { id: 1, label: 'AWS CloudOps Engineer', img: 'https://images.credly.com/size/340x340/images/88a6405e-0f26-442a-95ed-f9b9db4c857e/blob', r: 120 },
+  { id: 2, label: 'AWS Cloud Practitioner', img: 'https://images.credly.com/size/340x340/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png', r: 120 },
+  { id: 3, label: 'AWS Sales Accreditation', img: 'https://images.credly.com/size/340x340/images/46ea4542-72a8-46a1-8d68-b72c4ca50820/blob', r: 120 },
+  { id: 4, label: 'AWS Technical Accredited', img: 'https://images.credly.com/size/340x340/images/8f006312-3154-45bf-a845-4a043641e83c/blob', r: 120 },
+  { id: 5, label: 'USFQ', img: usfqLogo, isLogo: true, sub: 'Computer Science', r: 160 },
 ]
 
 const USFQ_IDX = 4
@@ -33,8 +33,8 @@ function Me() {
     const w = window.innerWidth
     const h = window.innerHeight
     /* USFQ center: upper-center area, leaving room for bio at bottom-left */
-    const cx = w * 0.52
-    const cy = h * 0.32
+    const cx = w * 0.72
+    const cy = h * 0.42
 
     const engine = Engine.create({ gravity: { x: 0, y: 0 } })
     engineRef.current = engine
@@ -152,24 +152,36 @@ function Me() {
         if (!pos) return null
         const size = badge.r * 2
         return (
-          <div
-            key={badge.id}
-            className={`badge${dragIdx === i ? ' grabbed' : ''}${badge.isLogo ? ' badge-logo' : ''}`}
-            style={{
-              left: pos.x - badge.r,
-              top: pos.y - badge.r,
-              width: size,
-              height: badge.isLogo ? 'auto' : size,
-            }}
-          >
-            <img
-              className="badge-img"
-              src={badge.img}
-              alt={badge.label}
-              draggable={false}
-              style={{ width: size, height: size }}
-            />
-            {badge.sub && <span className="badge-sub">{badge.sub}</span>}
+          <div key={badge.id}>
+            <div
+              className={`badge${dragIdx === i ? ' grabbed' : ''}${badge.isLogo ? ' badge-logo' : ''}`}
+              style={{
+                left: pos.x - badge.r,
+                top: pos.y - badge.r,
+                width: size,
+                height: size,
+              }}
+            >
+              <img
+                className="badge-img"
+                src={badge.img}
+                alt={badge.label}
+                draggable={false}
+                style={{ width: size, height: size }}
+              />
+            </div>
+            {badge.sub && (
+              <span
+                className="badge-sub"
+                style={{
+                  left: pos.x - badge.r,
+                  top: pos.y + badge.r + 8,
+                  width: size,
+                }}
+              >
+                {badge.sub}
+              </span>
+            )}
           </div>
         )
       })}
