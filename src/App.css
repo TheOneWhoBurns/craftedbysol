@@ -46,11 +46,17 @@
   color: #f5f5f0;
 }
 
-.nav-link {
+.nav-links {
   position: absolute;
   top: 2rem;
   left: 8vw;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-link {
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--deep);
@@ -60,6 +66,26 @@
 
 .nav-link:hover {
   color: var(--primary);
+}
+
+.nav-link:active {
+  animation: shake 350ms ease-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-4px) rotate(-1deg); }
+  30% { transform: translateX(3px) rotate(0.5deg); }
+  45% { transform: translateX(-2px) rotate(-0.5deg); }
+  60% { transform: translateX(2px) rotate(0.3deg); }
+  75% { transform: translateX(-1px); }
+}
+
+.nav-sep {
+  color: var(--deep);
+  opacity: 0.3;
+  font-weight: 400;
+  user-select: none;
 }
 
 .name .morph {

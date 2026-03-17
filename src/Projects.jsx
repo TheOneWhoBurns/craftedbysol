@@ -5,12 +5,14 @@ import './Projects.css'
 const BATCH = 15
 const EASE = 'cubic-bezier(0.87, 0, 0.13, 1)'
 
+
 function Projects() {
   const [repos, setRepos] = useState([])
   const [selectedTag, setSelectedTag] = useState(null)
   const [tagsExpanded, setTagsExpanded] = useState(false)
   const [shown, setShown] = useState(BATCH)
-  const { trigger } = useWebHaptics()
+  const { trigger } = useWebHaptics({ debug: true })
+  const { soudnless_trigger } = useWebHaptics({debug: false})
   const gridRef = useRef(null)
   const positionsRef = useRef(new Map())
   const animationsRef = useRef(new Map())
@@ -92,8 +94,8 @@ function Projects() {
   const selectTag = (tag) => {
     capturePositions()
     setSelectedTag(selectedTag === tag ? null : tag)
-    setShown(BATCH)
-    trigger('selection')
+    setShown(repos.length)
+    trigger('medium')
   }
 
   return (
@@ -112,8 +114,11 @@ function Projects() {
             </button>
           ))}
         </div>
+        {!tagsExpanded && (
+          <div className="tags-expand-zone" onClick={() => { setTagsExpanded(true); soudnless_trigger('success') }} />
+        )}
       </div>
-      <button className="tags-toggle" onClick={() => { setTagsExpanded(!tagsExpanded); trigger('light') }}>
+      <button className="tags-toggle" onClick={() => { setTagsExpanded(!tagsExpanded); soudnless_trigger('success') }}>
         {tagsExpanded ? 'see less' : 'see more'}
       </button>
       <hr className="projects-divider" />
@@ -138,7 +143,7 @@ function Projects() {
         ))}
       </div>
       {hasMore && (
-        <button className="load-more" onClick={() => { setShown((s) => s + BATCH); trigger('light') }}>
+        <button className="load-more" onClick={() => { setShown((s) => s + BATCH); trigger('medium') }}>
           show more
         </button>
       )}

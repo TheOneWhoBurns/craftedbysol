@@ -11,6 +11,7 @@
 }
 
 .projects-texture {
+  position: fixed;
   background-image: url('./assets/cartographer.png');
   background-size: 500px 500px;
   filter: invert(1);
@@ -27,10 +28,21 @@
 }
 
 .tags-container {
-  max-height: 4.75rem;
+  position: relative;
+  max-height: 3.5rem;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(to bottom, white 55%, transparent 100%);
-  mask-image: linear-gradient(to bottom, white 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, white 40%, transparent 100%);
+  mask-image: linear-gradient(to bottom, white 40%, transparent 100%);
+}
+
+.tags-expand-zone {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  z-index: 2;
+  cursor: pointer;
 }
 
 .tags-container.expanded {
@@ -191,4 +203,21 @@
 .load-more:hover {
   border-color: rgba(135, 229, 253, 0.4);
   background: rgba(135, 229, 253, 0.06);
+}
+
+/* ── Shake ── */
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-4px) rotate(-1deg); }
+  30% { transform: translateX(3px) rotate(0.5deg); }
+  45% { transform: translateX(-2px) rotate(-0.5deg); }
+  60% { transform: translateX(2px) rotate(0.3deg); }
+  75% { transform: translateX(-1px); }
+}
+
+.tag:active,
+.load-more:active,
+.project-card:active {
+  animation: shake 350ms ease-out;
 }

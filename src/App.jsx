@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { TextMorph } from 'torph/react'
+import { useWebHaptics } from 'web-haptics/react'
 import './App.css'
 
 const names = ['Sol', 'Andres\u00A0Martinez', 'TheOneWhoBurns']
@@ -54,14 +55,21 @@ function useTypewriter(strings) {
 
 function App() {
   const name = useTypewriter(names)
+  const { trigger } = useWebHaptics({ debug: true })
 
   return (
     <div className="page">
       <div className="texture-overlay" />
-      <a href="https://projects.craftedbysol.dev" className="nav-link">Projects</a>
+      <div className="nav-links">
+        <a href={window.location.hostname === 'localhost' ? '/projects' : 'https://projects.craftedbysol.dev'} className="nav-link" onClick={() => trigger('success')}>Projects</a>
+        <span className="nav-sep">|</span>
+        <a href={window.location.hostname === 'localhost' ? '/me' : 'https://me.craftedbysol.dev'} className="nav-link" onClick={() => trigger('success')}>Me</a>
+        <span className="nav-sep">|</span>
+        <a href="https://www.linkedin.com/in/andres-sol/" className="nav-link" onClick={() => trigger('success')}>Socials</a>
+      </div>
       <div className="name">
         <span className="static">Crafted by&nbsp;</span>
-        <a href="https://github.com/TheOneWhoBurns" target="_blank" rel="noopener noreferrer" className="morph-link">
+        <a href="https://github.com/TheOneWhoBurns" target="_blank" rel="noopener noreferrer" className="morph-link" onClick={() => trigger('nudge')}>
           <TextMorph className="morph" duration={80} scale={false} ease="linear">{name}</TextMorph>
         </a>
       </div>
