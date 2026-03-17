@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  background-color: var(--frost);
+  background-color: #5cc8e6;
   overflow: hidden;
 }
 
@@ -35,7 +35,11 @@
   font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 600;
   letter-spacing: -0.02em;
+}
+
+.morph-link {
   text-decoration: none;
+  display: inline-flex;
 }
 
 .name .static {
