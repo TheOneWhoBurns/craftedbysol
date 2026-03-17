@@ -5,8 +5,7 @@ import './index.css'
 const path = window.location.pathname
 const host = window.location.hostname
 const isProjects = host.startsWith('projects.') || path.startsWith('/projects')
-const isMe = host.startsWith('me.') || path.startsWith('/me')
-const Page = lazy(() => isProjects ? import('./Projects.jsx') : isMe ? import('./Me.jsx') : import('./App.jsx'))
+const Page = lazy(() => isProjects ? import('./Projects.jsx') : import('./App.jsx'))
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
