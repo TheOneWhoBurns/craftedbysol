@@ -46,11 +46,23 @@
 }
 
 .me-text {
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.75;
   color: rgba(255, 255, 255, 0.75);
   font-weight: 400;
   margin-bottom: 0.5rem;
+}
+
+.me-link {
+  color: var(--frost);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(135, 229, 253, 0.3);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.me-link:hover {
+  color: var(--aqua);
+  border-color: var(--aqua);
 }
 
 .me-text-dim {
@@ -95,8 +107,7 @@
 .badge-logo .badge-img {
   background: rgba(255, 255, 255, 0.94);
   border-radius: 50%;
-  /* tighter padding so logo fills more of the circle; right offset for visual center */
-  padding: 10px 0px 14px 38px;
+  padding: 14px;
   box-shadow:
     0 0 30px rgba(255, 255, 255, 0.12),
     0 0 60px rgba(135, 229, 253, 0.08);
@@ -104,7 +115,7 @@
 
 .badge-sub {
   position: absolute;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 900;
   color: #fff;
   letter-spacing: 0.12em;

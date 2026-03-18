@@ -28,3 +28,19 @@ html, body, #root {
   background-size: 300px 300px;
   pointer-events: none;
 }
+
+.back-arrow {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  font-size: 1.8rem;
+  color: var(--frost);
+  text-decoration: none;
+  z-index: 50;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.back-arrow:hover {
+  color: var(--aqua);
+  transform: translateX(-4px);
+}

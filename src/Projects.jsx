@@ -101,6 +101,7 @@ function Projects() {
   return (
     <div className="projects-page">
       <div className="texture-overlay projects-texture" />
+      <a href="/" className="back-arrow">&larr;</a>
       <h1 className="projects-title">Projects</h1>
       <div className={`tags-container${tagsExpanded ? ' expanded' : ''}`}>
         <div className="tags">

@@ -5,7 +5,7 @@
   overflow-y: auto;
 }
 
-.projects-page > *:not(.texture-overlay) {
+.projects-page > *:not(.texture-overlay):not(.back-arrow) {
   position: relative;
   z-index: 1;
 }
