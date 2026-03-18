@@ -3,9 +3,8 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 
 const path = window.location.pathname
-const host = window.location.hostname
-const isProjects = host.startsWith('projects.') || path.startsWith('/projects')
-const isMe = host.startsWith('me.') || path.startsWith('/me')
+const isProjects = path.startsWith('/projects')
+const isMe = path.startsWith('/me')
 
 const Page = lazy(() =>
   isProjects ? import('./Projects.jsx') :

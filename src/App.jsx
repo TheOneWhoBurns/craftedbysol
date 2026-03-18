@@ -61,9 +61,9 @@ function App() {
     <div className="page">
       <div className="texture-overlay" />
       <div className="nav-links">
-        <a href={window.location.hostname === 'localhost' ? '/projects' : 'https://projects.craftedbysol.dev'} className="nav-link" onClick={() => trigger('success')}>Projects</a>
+        <a href="/projects" className="nav-link" onClick={() => trigger('success')}>Projects</a>
         <span className="nav-sep">|</span>
-        <a href={window.location.hostname === 'localhost' ? '/me' : 'https://me.craftedbysol.dev'} className="nav-link" onClick={() => trigger('success')}>About Me</a>
+        <a href="/me" className="nav-link" onClick={() => trigger('success')}>About Me</a>
         <span className="nav-sep">|</span>
         <a href="https://www.linkedin.com/in/andres-sol/" className="nav-link" onClick={() => trigger('success')}>Socials</a>
       </div>
