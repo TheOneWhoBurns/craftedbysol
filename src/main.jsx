@@ -6,11 +6,11 @@ const path = window.location.pathname
 const isProjects = path.startsWith('/projects')
 const isMe = path.startsWith('/me')
 
-const Page = lazy(() =>
-  isProjects ? import('./Projects.jsx') :
-  isMe ? import('./Me.jsx') :
-  import('./App.jsx')
-)
+const ProjectsPage = lazy(() => import('./Projects.jsx'))
+const MePage = lazy(() => import('./Me.jsx'))
+const AppPage = lazy(() => import('./App.jsx'))
+
+const Page = isProjects ? ProjectsPage : isMe ? MePage : AppPage
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
